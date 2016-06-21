@@ -20,7 +20,7 @@
     {
       "matches": ["http://*/*", "https://*/*"],
       // "css": ["mystyles.css"],
-      "js": ["jquery-3.0.0.min.js", "send.js"]
+      "js": ["visit.js"]
     }
   ]
 }
