@@ -19,9 +19,9 @@
 
   "permissions": [
     "activeTab",
-    "history",
+    // "history",
+    // "webRequest",
     "tabs",
-    "webRequest",
     "webNavigation"
   ],
 
@@ -31,8 +31,10 @@
 
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["visit.js"]
+      // "matches": ["http://*/*", "https://*/*"],
+      // "js": ["visit.js"]
+      "matches": ["http://www.websee.io/*", "https://www.websee.io/*"],
+      "js": ["websee.js"]
     }
   ]
 }
