@@ -19,8 +19,6 @@
 
   "permissions": [
     "activeTab",
-    // "history",
-    // "webRequest",
     "tabs",
     "webNavigation"
   ],
