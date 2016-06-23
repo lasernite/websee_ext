@@ -22,7 +22,7 @@
     "history",
     "tabs",
     "webRequest",
-    "webNavigation",
+    "webNavigation"
   ],
 
   "background": {
