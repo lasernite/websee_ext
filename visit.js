@@ -12,12 +12,6 @@ function sendData() {
 	var xhr = new XMLHttpRequest();
 	xhr.withCredentials = true;
 
-	// xhr.addEventListener("readystatechange", function () {
-	//   if (this.readyState === 4) {
-	//     console.log(this.responseText);
-	//   }
-	// });
-
 	// xhr.open("POST", "http://localhost:3000/visits/create.json");
 	xhr.open("POST", "https://websee.herokuapp.com/visits/create.json");
 	xhr.setRequestHeader("content-type", "application/json");
