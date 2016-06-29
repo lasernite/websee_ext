@@ -80,11 +80,11 @@ docReady(function() {
 	var loggedIn = document.getElementsByClassName("logged_in");
 	var loggedOut = document.getElementsByClassName("logged_out");
 
-	for (i in loggedIn) {
-		loggedIn[i].removeAttribute("hidden")
+	for (var i = 0; i < loggedIn.length; i++) {
+		loggedIn[i].className = loggedIn[i].className.replace(/\bhidden\b/,'');
 	};
 
-	for (i in loggedOut) {
+	for (var i = 0; i < loggedOut.length; i++) { 
 		loggedOut[i].className += " hidden"
 	};
 });
