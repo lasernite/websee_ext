@@ -1,3 +1,4 @@
+// Note to improve this at some point as it currently sends 2x to database often
 // On page change send new URL and Title
 chrome.webNavigation.onCompleted.addListener(function(details) {
 	sendDataIfUrlChange(details)
