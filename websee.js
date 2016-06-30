@@ -72,10 +72,6 @@
 
 // After document is ready do all this stuff
 docReady(function() {
-	// Remove the chrome extension login button
-   var installButton = document.getElementById("chrome_extension_install_button");
-	installButton.className += " hidden";
-
 	// Show logged in stuff and hide logged out stuff
 	var loggedIn = document.getElementsByClassName("logged_in");
 	var loggedOut = document.getElementsByClassName("logged_out");
