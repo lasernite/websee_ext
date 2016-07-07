@@ -25,8 +25,8 @@ function sendDataIfUrlChange(details) {
 			var xhr = new XMLHttpRequest();
 			xhr.withCredentials = true;
 
-			// xhr.open("POST", "http://localhost:3000/visits/create.json");
-			xhr.open("POST", "https://websee.herokuapp.com/visits/create.json");
+			xhr.open("POST", "http://localhost:3000/visits/create.json");
+			// xhr.open("POST", "https://websee.herokuapp.com/visits/create.json");
 			xhr.setRequestHeader("content-type", "application/json");
 			xhr.setRequestHeader("charset", "utf-8");
 			xhr.setRequestHeader("cache-control", "no-cache");
@@ -37,5 +37,15 @@ function sendDataIfUrlChange(details) {
 		window.oldUrl = tab.url
 	});
 }
+
+// Insert discussion into page
+// Called when the user clicks on the browser action.
+chrome.browserAction.onClicked.addListener(function(tab) {
+  // No tabs or host permissions needed!
+  console.log('Turning ' + tab.url + ' red!');
+  chrome.tabs.executeScript({
+    file: 'discussion.js'
+  });
+});
 
 
