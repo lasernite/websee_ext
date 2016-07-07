@@ -10,7 +10,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("GET", "https://www.websee.io/visits/url?url=" + encodeURIComponent("https://www.reddit.com/"));
+xhr.open("GET", "https://www.websee.io/visits/url?url=" + encodeURIComponent(url));
 xhr.setRequestHeader("cache-control", "no-cache");
 
 xhr.send();
