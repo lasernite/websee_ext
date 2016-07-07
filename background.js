@@ -42,9 +42,14 @@ function sendDataIfUrlChange(details) {
 // Called when the user clicks on the browser action.
 chrome.browserAction.onClicked.addListener(function(tab) {
   // No tabs or host permissions needed!
-  console.log('Turning ' + tab.url + ' red!');
+  // tab.url
+  // Inject HTML and JS
   chrome.tabs.executeScript({
     file: 'discussion.js'
+  });
+  // Inject CSS
+  chrome.tabs.insertCSS({
+  	 file: 'discussion.css'
   });
 });
 
