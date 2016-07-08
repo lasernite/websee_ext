@@ -38,20 +38,4 @@ function sendDataIfUrlChange(details) {
 	});
 }
 
-// Insert discussion into page
-// Called when the user clicks on the browser action.
-chrome.browserAction.onClicked.addListener(function(tab) {
-  // No tabs or host permissions needed!
-  // Inject HTML
-  chrome.tabs.executeScript(tab.id, {
-  		code: "var url =" + "'" + tab.url + "'" + ";" 
-  }, function() {
-  		chrome.tabs.executeScript(tab.id, {file: 'discussion.js'});
-  });
-  // Inject CSS
-  chrome.tabs.insertCSS({
-  	 file: 'discussion.css'
-  });
-});
-
 

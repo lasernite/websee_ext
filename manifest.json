@@ -18,8 +18,8 @@
 
   "browser_action": {
     "default_icon": "icon.png",
-    "default_title": "Websee - The Ocean of the Web"
-    //, "default_popup": "popup.html"
+    "default_title": "Websee - The Ocean of the Web", 
+    "default_popup": "popup.html"
   },
 
   "icons": { "16": "icon16.png",
@@ -29,7 +29,7 @@
 
   "content_scripts": [
     {
-      "matches": ["http://www.websee.io/*", "https://www.websee.io/*", "http://localhost:3000/*"],
+      "matches": ["http://www.websee.io/*", "https://www.websee.io/*"],
       "js": ["websee.js"]
     }
   ]
