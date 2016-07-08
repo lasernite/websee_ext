@@ -25,8 +25,8 @@ function sendDataIfUrlChange(details) {
 			var xhr = new XMLHttpRequest();
 			xhr.withCredentials = true;
 
-			xhr.open("POST", "http://localhost:3000/visits/create.json");
-			// xhr.open("POST", "https://websee.herokuapp.com/visits/create.json");
+			// xhr.open("POST", "http://localhost:3000/visits/create.json");
+			xhr.open("POST", "https://websee.herokuapp.com/visits/create.json");
 			xhr.setRequestHeader("content-type", "application/json");
 			xhr.setRequestHeader("charset", "utf-8");
 			xhr.setRequestHeader("cache-control", "no-cache");
