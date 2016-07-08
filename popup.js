@@ -13,7 +13,8 @@ xhr.addEventListener("readystatechange", function () {
 
 chrome.tabs.query({active: true, currentWindow: true}, 
 	function callback(tabs) {
-		xhr.open("GET", "https://www.websee.io/visits/url?url=" + encodeURIComponent(tabs[0].url));
+		// xhr.open("GET", "https://www.websee.io/visits/url?url=" + encodeURIComponent(tabs[0].url));
+		xhr.open("GET", "http://localhost:3000/visits/url?url=" + encodeURIComponent(tabs[0].url));
 
 		xhr.setRequestHeader("cache-control", "no-cache");
 
