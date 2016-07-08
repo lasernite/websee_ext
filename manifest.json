@@ -3,7 +3,7 @@
 
   "name": "Websee",
   "short_name": "Websee",
-  "description": "This extension powers Websee, the most popular daily links from across the web, aggregated from anonymous extension users like you!",
+  "description": "This extension powers Websee, the most popular daily links and discussions across the web, from anonymous extension users like you!",
   "version": "0.3",
 
   "permissions": [
