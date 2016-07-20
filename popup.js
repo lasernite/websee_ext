@@ -32,11 +32,17 @@ xhr.addEventListener("readystatechange", function () {
 
 chrome.tabs.query({active: true, currentWindow: true}, 
 	function callback(tabs) {
-		xhr.open("GET", "https://www.websee.io/visits/url?url=" + encodeURIComponent(tabs[0].url));
-		// xhr.open("GET", "http://localhost:3000/visits/url?url=" + encodeURIComponent(tabs[0].url));
 
+		xhr.open("POST", "https://www.websee.io/visits/url") ;
+		// xhr.open("POST", "http://localhost:3000/visits/url");
+
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.setRequestHeader("charset", "utf-8");
 		xhr.setRequestHeader("cache-control", "no-cache");
 
-		xhr.send();
+        var data = JSON.stringify({ "url": tabs[0].url });
+        //encodeURIComponent(tabs[0].url)
+
+		xhr.send(data);
 	});
 
