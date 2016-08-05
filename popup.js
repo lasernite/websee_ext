@@ -76,7 +76,7 @@ function sharePost() {
     chrome.tabs.query({active: true, currentWindow: true}, 
         function callback(tabs) {
 
-            xhr.open("POST", "https://www.websee.io/posts/share") ;
+            xhrPost.open("POST", "https://www.websee.io/posts/share") ;
             // xhrPost.open("POST", "http://localhost:3000/posts/share");
 
             xhrPost.setRequestHeader("content-type", "application/json");
