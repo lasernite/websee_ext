@@ -23,26 +23,70 @@ xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
   if (this.readyState === 4) {
-  	var el = document.getElementsByTagName("BODY")[0],
-    	 elChild = document.createElement('div');
-	elChild.innerHTML = this.responseText;
-	el.insertBefore(elChild, el.firstChild);
+    // Load Main Content on dropdown
+    var el = document.getElementsByTagName("BODY")[0],
+         elChild = document.createElement('div');
+    elChild.innerHTML = this.responseText;
+    el.insertBefore(elChild, el.firstChild);
+
+    // Frontend Logic
+    var share = document.getElementById('share_button');
+    var shared = document.getElementById('shared_button');
+    share.addEventListener('click', function() {
+        sharePost()
+        share.classList.toggle('hidden');
+        shared.classList.toggle('hidden');
+    });
+    shared.addEventListener('click', function() {
+        sharePost()
+        share.classList.toggle('hidden');
+        shared.classList.toggle('hidden');
+    });
+
   }
 });
 
 chrome.tabs.query({active: true, currentWindow: true}, 
-	function callback(tabs) {
+    function callback(tabs) {
 
-		xhr.open("POST", "https://www.websee.io/visits/url") ;
-		// xhr.open("POST", "http://localhost:3000/visits/url");
+        xhr.open("POST", "https://www.websee.io/visits/url") ;
+        // xhr.open("POST", "http://localhost:3000/visits/url");
 
         xhr.setRequestHeader("content-type", "application/json");
         xhr.setRequestHeader("charset", "utf-8");
-		xhr.setRequestHeader("cache-control", "no-cache");
+        xhr.setRequestHeader("cache-control", "no-cache");
 
         var data = JSON.stringify({ "url": tabs[0].url });
         //encodeURIComponent(tabs[0].url)
 
-		xhr.send(data);
-	});
+        xhr.send(data);
+    });
+
+function sharePost() {
+    // Post/Share URL to Websee
+    var xhrPost = new XMLHttpRequest();
+    xhrPost.withCredentials = true;
+
+    xhrPost.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        // Changes on success
+      }
+    });
+
+    chrome.tabs.query({active: true, currentWindow: true}, 
+        function callback(tabs) {
+
+            xhr.open("POST", "https://www.websee.io/posts/share") ;
+            // xhrPost.open("POST", "http://localhost:3000/posts/share");
+
+            xhrPost.setRequestHeader("content-type", "application/json");
+            xhrPost.setRequestHeader("charset", "utf-8");
+            xhrPost.setRequestHeader("cache-control", "no-cache");
+
+            var data = JSON.stringify({ "url": tabs[0].url });
+            //encodeURIComponent(tabs[0].url)
+
+            xhrPost.send(data);
+        });
+};
 
