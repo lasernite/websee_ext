@@ -4,7 +4,7 @@
   "name": "Websee",
   "short_name": "Websee",
   "description": "This extension powers Websee, the most popular daily links and discussions across the web, from anonymous extension users like you!",
-  "version": "0.4",
+  "version": "0.5",
 
   "permissions": [
     "activeTab",
@@ -18,7 +18,7 @@
 
   "browser_action": {
     "default_icon": "icon.png",
-    "default_title": "Websee - The Ocean of the Web", 
+    "default_title": "Websee - The Sea of the Web", 
     "default_popup": "popup.html"
   },
 
