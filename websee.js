@@ -92,6 +92,10 @@
 
 // After document is ready do all this stuff
 docReady(function() {
+    // Write user_id to local_storage if it hasn't changed
+    var user_id = document.getElementById("user_id").innerHTML;
+    chrome.storage.sync.set({"user_id": user_id});
+
 	// Show logged in stuff and hide logged out stuff
 	var loggedIn = document.getElementsByClassName("logged_in");
 	var loggedOut = document.getElementsByClassName("logged_out");

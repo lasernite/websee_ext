@@ -23,6 +23,7 @@ xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
   if (this.readyState === 4) {
+
     // Load Main Content on dropdown
     var el = document.getElementsByTagName("BODY")[0],
          elChild = document.createElement('div');
@@ -89,4 +90,3 @@ function sharePost() {
             xhrPost.send(data);
         });
 };
-

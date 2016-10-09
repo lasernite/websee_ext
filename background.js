@@ -20,13 +20,14 @@
 
 // On page change send new URL and Title
 chrome.webNavigation.onCompleted.addListener(function(details) {
-	sendDataIfUrlChange(details)
+	sendDataIfUrlChange(details);
 })
 
 chrome.webNavigation.onHistoryStateUpdated.addListener(function(details) {
 	sendDataIfUrlChange(details);
 })
 
+// Only sends data when URL changes
 function sendDataIfUrlChange(details) {
 	// Get the tab id from which the navigation was made
 	var tabId = details.tabId
@@ -37,25 +38,36 @@ function sendDataIfUrlChange(details) {
 			var url = tab.url;
 			var title = tab.title;
 
-			var data = JSON.stringify({
-			  "url": url,
-			  "title": title
-			});
+			// Get User ID and Send Data
+			chrome.storage.sync.get("user_id", function(user_id) {
+				if (user_id == null) {
+					sendData(url, title, 1)
+				} else {
+					sendData(url, title, user_id)
+				}
+			})
 
-			var xhr = new XMLHttpRequest();
-			xhr.withCredentials = true;
+			// Send Data Function
+			function sendData(url, title, user_id) {
+				var data = JSON.stringify({
+				  "url": url,
+				  "title": title,
+				  "user_id": user_id
+				});
 
-			// xhr.open("POST", "http://localhost:3000/visits/create.json");
-			xhr.open("POST", "https://websee.herokuapp.com/visits/create.json");
-			xhr.setRequestHeader("content-type", "application/json");
-			xhr.setRequestHeader("charset", "utf-8");
-			xhr.setRequestHeader("cache-control", "no-cache");
+				var xhr = new XMLHttpRequest();
+				xhr.withCredentials = true;
 
-			xhr.send(data);
+				// xhr.open("POST", "http://localhost:3000/visits/create.json");
+				xhr.open("POST", "https://websee.herokuapp.com/visits/create.json");
+				xhr.setRequestHeader("content-type", "application/json");
+				xhr.setRequestHeader("charset", "utf-8");
+				xhr.setRequestHeader("cache-control", "no-cache");
+
+				xhr.send(data);
+			}
 		}
 		// Update oldUrl with current url, for next call
 		window.oldUrl = tab.url
 	});
 }
-
-
