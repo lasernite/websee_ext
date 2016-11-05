@@ -92,10 +92,23 @@
 
 // After document is ready do all this stuff
 docReady(function() {
-    // Write user_id to local_storage if it hasn't changed
-    var user_id = document.getElementById("user_id").innerHTML;
-    chrome.storage.sync.set({"user_id": user_id});
-
+    // Write user_id to local_storage if its null or changed
+    var user_id_component = document.getElementById("user_id");
+    // Make sure it's not null
+    if (user_id_component != null) {
+        // Only update if it's changed
+        chrome.storage.sync.get("user_id", function(user_id) {
+            new_user_id = user_id_component.innerHTML;
+            if (user_id == null) {
+                chrome.storage.sync.set({"user_id": new_user_id});
+            } 
+            // If its changed, save new id
+            else if (new_user_id != user_id['user_id']) {
+                chrome.storage.sync.set({"user_id": new_user_id});
+            };
+        });   
+    };
+    
 	// Show logged in stuff and hide logged out stuff
 	var loggedIn = document.getElementsByClassName("logged_in");
 	var loggedOut = document.getElementsByClassName("logged_out");
